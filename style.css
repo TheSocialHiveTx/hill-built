@@ -240,18 +240,19 @@ button {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1rem;
   list-style: none;
 }
 
 .nav-link {
-  font-size: 0.925rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 0.4rem 0;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -279,6 +280,10 @@ button {
   gap: 1rem;
 }
 
+.mobile-menu {
+  display: none;
+}
+
 .mobile-toggle {
   display: none;
   flex-direction: column;
@@ -299,6 +304,18 @@ button {
   background-color: var(--color-text-white);
   border-radius: 2px;
   transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.mobile-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ==========================================================================
@@ -345,6 +362,11 @@ button {
   border-color: var(--color-primary);
   color: var(--color-primary);
   transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
 }
 
 .btn-phone {
@@ -1793,10 +1815,26 @@ button {
     display: flex;
   }
 
+  .brand-text-block {
+    display: none;
+  }
+
+  .brand-svg-logo {
+    height: 42px;
+  }
+
+  .navbar-inner {
+    padding: 0.5rem 0;
+  }
+
+  .nav-actions .btn-primary {
+    display: none;
+  }
+
   .mobile-menu {
     display: none;
-    position: fixed;
-    top: 65px;
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
     background-color: var(--color-bg-surface);
